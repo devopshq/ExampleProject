@@ -3,7 +3,7 @@ ExampleProject
 This is simple example of project in DevOpsHQ Community with basic functionality.
 See english instruction here: https://github.com/devopshq/ExampleProject/blob/master/README_EN.md
 
-[![ExampleProject build status](https://travis-ci.org/devopshq/ExampleProject.svg)](https://travis-ci.org/devopshq/tfs) [![dohq-tfs code quality](https://api.codacy.com/project/badge/Grade/a533e2d46b9b471893b4991e89649212)](https://www.codacy.com/app/tim55667757/tfs/dashboard) [![dohq-tfs code coverage](https://api.codacy.com/project/badge/Coverage/a533e2d46b9b471893b4991e89649212)](https://www.codacy.com/app/tim55667757/tfs/dashboard) [![dohq-tfs on PyPI](https://img.shields.io/pypi/v/dohq-tfs.svg)](https://pypi.python.org/pypi/dohq-tfs) [![dohq-tfs license](https://img.shields.io/pypi/l/vspheretools.svg)](https://github.com/devopshq/tfs/blob/master/LICENSE)
+[![ExampleProject build status](https://travis-ci.org/devopshq/ExampleProject.svg)](https://travis-ci.org/devopshq/ExampleProject) [![ExampleProject code quality](https://api.codacy.com/project/badge/Grade/a533e2d46b9b471893b4991e89649212)](https://www.codacy.com/app/tim55667757/ExampleProject/dashboard) [![ExampleProject code coverage](https://api.codacy.com/project/badge/Coverage/a533e2d46b9b471893b4991e89649212)](https://www.codacy.com/app/tim55667757/ExampleProject/dashboard) [![ExampleProject on PyPI](https://img.shields.io/pypi/v/dohq-example-project.svg)](https://pypi.python.org/pypi/dohq-example-project) [![ExampleProject license](https://img.shields.io/pypi/l/dohq-example-project.svg)](https://github.com/devopshq/ExampleProject/blob/master/LICENSE)
 
 ***Содержание:***
 - [Введение](#Introduction)
@@ -292,7 +292,7 @@ Travis CI сервис ищет конфигурацию шагов сборки
  
 Ниже представлен пример файла конфигурации **.travis.yml** с минимальным набором типичных шагов сборки в Travis CI для небольших и простых проектов. Достаточно скопировать его к себе, добавить юнит-тесты в ./tests, заменить ключи secure и он должен подойти, либо с минимальными доработками:
 
-```snakeyaml
+```YAML
 language: python
 python: '3.6'
 branches:
