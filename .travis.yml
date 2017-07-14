@@ -1,0 +1,28 @@
+language: python
+python: '3.6'
+branches:
+  only:  # можно перечислить ветки из которых должен быть автоматический запуск сборки на каждый push кода в репозиторий
+  - master
+  - develop
+install:  # раздел предварительной настройки окружения до сборки
+  - pip install pytest coverage codacy-coverage  # эти библиотеки используются для запуска юнит-тестов сбора статистики покрытия кода юнит-тестами для сервиса Codacy
+script:  # основной шаг сборки, состоящий из последовательного запуска скриптов
+  - printenv  # для отладки очень помогает вывод переменных окружения в логах Travis CI, потом этот шаг можно удалить
+  - ls -la  # также для отладки, потом этот шаг можно удалить
+  - coverage run -m py.test tests  # собираем покрытие кода тестами
+  - coverage xml  # формируем отчёт для Codacy
+  - python-codacy-coverage -r coverage.xml  # аплоадим отчёт в Codacy
+deploy:  # раздел деплоя в котором можно указать действия, которые нужно произвести с успешно собранным артефактом
+  provider: pypi  # например, Travis CI поддерживает автоматическую загрузку в PyPI через указание провайдера "pypi"
+  user: devopshq  # логин проекта в PyPI
+  password:  # зашифрованный пароль для PyPI через утилиту travis-encrypt подставьте в переменную secure ниже:
+    secure:  "e5lg5iPHSMCIpjEGeA0XuJPHaqzwQjLJefIyjQpRNSgf7h9kYwKYI1BH3b8T48QUw6r099QYSgsTJF1pDNWw7rdpTfiXP7pjvr1esmSSr7fyKVeRYNjc/st0n+Blu99At8HEwLXtoLRw2zD92VvTeZA01qRakT0M1bXccT+6pP3FolG5q2HCvzhzImc+Q2FXPSYGgZIYUo28GoYdeVztq+cFwWd27Onx8ROVU0FrVbGQxYS84reiLuI5aCjlv26SJ+5UQREh/RkYnWbogDPSkN+ee+Cl6r+C3WAtf67ac/l++T1ejsv5G+hSyJlWDUrl+2YbTe0ul2b5szo0YY2uW+w+xEJqynGQp6mH0OBm3MCGvEaV8DEnbM94b6PXz1LHi8opWZAGIVSyst+W3w7jwIMU9kUi1leu8jgAcNPUHIC3UhJ7fJrJC4lElOAAn+cdtT5sb6eC4kIOVL3RjCtodeFLAHVWQxeIXnnR07paZPTN8Y4OpYhIY3fcisl5tLnzFnVZ3lf7W9KnAD8mzqxJsPLYEyqAcLxugpEntgL4gRmt/3R4eZz8XRxFvgh3O4m8u38eIwIWyd1FvY9ZfdrkUxfqWdESjz3tU6M4ZDlEVKdsfXtAr2QIxCA/OefprsuQCBtnyc14p1xfe0IiPXTnh5NaeuypZrKw2YaG/nct+tw="
+  distributions: sdist bdist_wheel  # виды артефактов, которые нужно загрузить в PyPY, sdist загружает .tar.gz, bdist_wheel - загружает wheel-файл
+  on:
+    all_branches: true
+  skip_cleanup: true
+after_script:  # команды которые нужно выполнить после успешного окончания сборки и деплоя
+  - echo "Deploy to PyPI finished."
+env:
+  global:  # здесь можно разместить общие переменные и секреты доступные для всех шагов сборки. Yапример, секрет для Codacy, зашифрованный через утилиту travis-encrypt подставьте в переменную secure ниже:
+  - secure: "ZGjMqDQ7BE2Y/Aago40EpeRJWGM4SRt4PWmfFsRiDKJpkcXOpD+VXTDPHeCNVPrTg1O0PMVzfoEJAi1ST1ZnlJDmufelk9WjtZJFx5grUVAldcODrBQS7yuE5Ck9COExagHvQOmhu4G0EMnxxL1fv5UEc3ef+4513ve1YaKNctE8CjnTV1XCdaazKuDGBB49wuax7DynN/5D0hQYHw5rsxhwHY4YB4IXkjB74rTcp6tYF6FtFrhWioQ+K1aJOcfeqcwPjPGpY7VySmkh/iTxwAtkTrltVN3j9D2F5X276XEW5kFWm9B0x3ytztNkmJk0BSWH2za5QbhrOmRtIml52XnQVWWwDLUV7WgOpGiMEhdcvdlXA5i82uahSUL1svBfR4AQ8uI+e7NdTVkVHY5GvTq+Gd7u8Bp0QPenwMEif62mIZVVTk7IMq99JLLYAEE39K64rTZAivCaEqrfbX1ObMjyaMCeGP1Nu9evsEOM8DOsh8hMDU01gxSLUZFS0q+CKnRBsXEKhxtlNo6Wur260b23rJMrDeii2Q94OUmMbqus9qjZ8hwv5QEgDZgluZyOJsM1wLBqyn41FSBv3j7AiqA0o4RcROlg/paePBhX5NA1DpC1SOVs/E6P9Sio6vwvgQz28+oQ5tsw2jNxjM6cmzEpZFKj9Fe56IYA7pPi3tI="
