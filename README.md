@@ -107,6 +107,14 @@ SOFTWARE.
    **Long Header**
 
 
+***Дополнительно:***
+
+Как реализовать подсветку синтаксиса: https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
+
+Полный список алиасов для языков программирования: https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+
+
+
 ## Оценка качества кода <a name="Codacy"></a>
 
 Качество кода автоматически отслеживается [сервисом Codacy](https://www.codacy.com/). Для его настройки:
