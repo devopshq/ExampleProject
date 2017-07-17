@@ -15,7 +15,7 @@ See english instruction here: https://github.com/devopshq/ExampleProject/blob/ma
      - [Настройка конфигурации в .travis.yml](#Configuration)
      - [Подготовка и настройка репозитория в PyPI](#PyPI)
 - [Публикация новости о релизе в Telegram-канале DevOpsHQ](#News)
-- [проверка тестового проекта](#Testing)
+- [Проверка тестового проекта](#Testing)
 
 
 # Введение <a name="Introduction"></a>
