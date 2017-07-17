@@ -15,6 +15,7 @@ See english instruction here: https://github.com/devopshq/ExampleProject/blob/ma
      - [Настройка конфигурации в .travis.yml](#Configuration)
      - [Подготовка и настройка репозитория в PyPI](#PyPI)
 - [Публикация новости о релизе в Telegram-канале DevOpsHQ](#News)
+- [Проверка тестового проекта](#Testing)
 
 
 # Введение <a name="Introduction"></a>
@@ -355,3 +356,60 @@ env:
     @devops_mega_bot [название вашего инструмента]
 
 3. После этого можно в канале сообщества опубликовать запись о новой версии и добавить информацию в произвольном виде: что вошло в новую сборку, какие фичи добавлены, какие баги исправлены и т.п.
+
+
+# Проверка тестового проекта <a name="Testing"></a>
+
+Чтобы убедиться, что данный тестовый проект **ExampleProject** работает, попробуйте установить его из PyPI:
+
+    pip install dohq-example-project [--upgrade] [--pre]
+
+В случае успеха установки вы увидите что-то вроде:
+
+```Shell
+pip install dohq-example-project --upgrade
+
+Collecting dohq-example-project
+  Downloading dohq_example_project-1.0.11-py3-none-any.whl
+Installing collected packages: dohq-example-project
+  Found existing installation: dohq-example-project 1.0.dev3
+    Uninstalling dohq-example-project-1.0.dev3:
+      Successfully uninstalled dohq-example-project-1.0.dev3
+Successfully installed dohq-example-project-1.0.11
+```
+
+Запустите тестовый проект:
+
+    exampleproject
+
+или
+
+    [python_directory]/Scripts/exampleproject
+
+и вы должны увидеть что-то вроде:
+
+```Shell
+This is Main module for ExampleProject that do nothing.
+Read more about DevOpsHQ Community here: https://github.com/devopshq/ExampleProject
+Version of ExampleProject is [ 1.0.11 ]
+```
+
+Также можно проверить информацию в pip:
+
+    pip show dohq-example-project
+
+после чего вы должны увидеть что-то вроде:
+
+```Shell
+Name: dohq-example-project
+Version: 1.0.11
+Summary: About Example Project: https://github.com/devopshq/ExampleProject
+Home-page: https://devopshq.github.io/ExampleProject/
+Author: Open DevOps Community
+Author-email: tim55667757@gmail.com
+License: MIT
+Location: c:\anaconda3\lib\site-packages
+Requires:
+```
+
+Аналогично вы можете проверить установку вашего проекта, сделанного на основе данного шаблона.
