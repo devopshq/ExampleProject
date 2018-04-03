@@ -20,7 +20,7 @@ See english instruction here: https://github.com/devopshq/ExampleProject/blob/ma
 
 # Введение <a name="Introduction"></a>
 
-**ExampleProject** — это пример простого проекта в ообществе DevOpsHQ с базовой функциональностью. Документация содержит в себе примеры и рекомендации для самостоятельной организации сборки любого нового проекта в сообществе DevOpsHQ. Сам проект — имеет типовую структуру и сборку в Travis CI. Фактически, достаточно скопировать этот проект и заменить некоторые настройки, руководствуясь комментариями ниже. 
+**ExampleProject** — это пример простого проекта в собществе DevOpsHQ с базовой функциональностью. Документация содержит в себе примеры и рекомендации для самостоятельной организации сборки любого нового проекта в сообществе DevOpsHQ. Сам проект — имеет типовую структуру и сборку в Travis CI. Фактически, достаточно скопировать этот проект и заменить некоторые настройки, руководствуясь комментариями ниже. 
 
 Подготовка любого нового проекта состоит из шагов, представленных на схеме ниже:
 
@@ -29,7 +29,7 @@ See english instruction here: https://github.com/devopshq/ExampleProject/blob/ma
 
 # Подготовка репозитория <a name="Preparing-repo"></a>
 
-1. Обсудить и согласовать с [Timur Gilmullin](https://github.com/Tim55667757) или [Alexander Pazdnikov](https://github.com/apazdnikov) выкладку нового проекта в https://github.com/devopshq. После этого будет создан и настроен репозиторий и типовые группы доступа, выданы права owner на проект.
+1. Обсудить и согласовать с [Timur Gilmullin](https://github.com/Tim55667757), [Aleksey Burov](https://github.com/orgs/devopshq/people/allburov) или [Alexander Pazdnikov](https://github.com/apazdnikov) выкладку нового проекта в https://github.com/devopshq. После этого будет создан и настроен репозиторий и типовые группы доступа, выданы права owner на проект.
 
 2. В настройках проекта (Settings) в разделе Options разрешается подключать только фичу (в разделе Features) Issue. Wikis и Projects в проектах на GitHub в сообществе DevOpsHQ мы не ведём.
 
