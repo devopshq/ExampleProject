@@ -11,6 +11,8 @@ __version__ = '1.0'  # Здесь можно менять глобальный �
 # import pkg_resources  # часть стандартной библиотеки setuptools
 # version = pkg_resources.get_distribution('YourProject').version
 
+devStatus = '4 - Beta'  # Билд-статус по умолчанию, смотрите: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+
 # Логика версионирования в зависимости от веток настраивается ниже:
 if 'TRAVIS_BUILD_NUMBER' in os.environ and 'TRAVIS_BRANCH' in os.environ:
     print("This is TRAVIS-CI build")
@@ -21,6 +23,8 @@ if 'TRAVIS_BUILD_NUMBER' in os.environ and 'TRAVIS_BRANCH' in os.environ:
         '' if 'release' in os.environ['TRAVIS_BRANCH'] or os.environ['TRAVIS_BRANCH'] == 'master' else 'dev',
         os.environ['TRAVIS_BUILD_NUMBER'],
     )
+
+    devStatus = '5 - Production/Stable' if 'release' in os.environ['TRAVIS_BRANCH'] or os.environ['TRAVIS_BRANCH'] == 'master' else devStatus
 
 else:
     print("This is local build")
@@ -51,7 +55,7 @@ setup(
     entry_points={'console_scripts': ['exampleproject = exampleproject.Main:Main']},  # Точка входа указывает на основной метод, который нужно запустить при запуске программы из консоли. Например, если основной модуль в пакете exampleproject называется Main, то в данном примере будет запущен метод Main() этого скрипта, если вы наберёте в консоли команду "exampleproject".
 
     classifiers=[  # все допустимые классификаторы для PyPI подробно перечислены на страничке: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: {}'.format(devStatus),
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Topic :: Utilities',

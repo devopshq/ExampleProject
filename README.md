@@ -182,7 +182,9 @@ __version__ = '1.0'  # Здесь можно менять глобальный �
 # https://github.com/devopshq/FuzzyClassificator/blob/master/FuzzyClassificator.py#L27
 # import pkg_resources  # часть стандартной библиотеки setuptools
 # version = pkg_resources.get_distribution('YourProject').version
-  
+
+devStatus = '4 - Beta'  # Билд-статус по умолчанию, смотрите: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+
 # Логика версионирования в зависимости от веток настраивается ниже:
 if 'TRAVIS_BUILD_NUMBER' in os.environ and 'TRAVIS_BRANCH' in os.environ:
     print("This is TRAVIS-CI build")
@@ -193,7 +195,9 @@ if 'TRAVIS_BUILD_NUMBER' in os.environ and 'TRAVIS_BRANCH' in os.environ:
         '' if 'release' in os.environ['TRAVIS_BRANCH'] or os.environ['TRAVIS_BRANCH'] == 'master' else 'dev',
         os.environ['TRAVIS_BUILD_NUMBER'],
     )
- 
+
+devStatus = '5 - Production/Stable' if 'release' in os.environ['TRAVIS_BRANCH'] or os.environ['TRAVIS_BRANCH'] == 'master' else devStatus
+
 else:
     print("This is local build")
     __version__ += '.dev0'  # set version as major.minor.localbuild if local build: python setup.py install
@@ -223,7 +227,7 @@ setup(
     entry_points={'console_scripts': ['MainScript = MainScript:Main']},  # Точка входа указывает на основной метод, который нужно запустить при запуске программы из консоли. Например, если основной модуль называется MainScript, то в данном примере будет запущен метод Main() этого скрипта, если вы наберёте в консоли команду "MainScript".
  
     classifiers=[  # все допустимые классификаторы для PyPI подробно перечислены на страничке: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: {}'.format(devStatus),
         'Environment :: Console',
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
